@@ -1,78 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin Panel - ফুলঢলুয়া মানবসেবা সংগঠন</title>
-
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f7f5;color:#17352b}
-.top{background:#087f5b;color:white;padding:18px}
-.wrap{max-width:900px;margin:auto}
-h1{margin:0;font-size:22px}
-h2{margin-top:0}
-.card{background:white;border-radius:14px;padding:20px;margin:18px 0;box-shadow:0 3px 14px #0001}
-input,textarea,select{width:100%;padding:12px;margin:7px 0 12px;border:1px solid #ccd8d3;border-radius:8px;font-size:15px}
-button{border:0;border-radius:8px;padding:11px 16px;background:#087f5b;color:white;font-size:15px;cursor:pointer;margin:4px}
-button.red{background:#c92a2a}
-button.gray{background:#667085}
-.msg{padding:10px;border-radius:8px;background:#edf7f2;margin-top:10px}
-.hidden{display:none}
-.tabs{display:flex;gap:7px;flex-wrap:wrap}
-.item{border:1px solid #d8e2de;border-radius:10px;padding:12px;margin:8px 0}
-.small{font-size:13px;color:#667085}
-a{color:white}
-</style>
-</head>
-
-<body>
-
-<header class="top">
-<div class="wrap">
-<h1>Admin Panel</h1>
-<div>ফুলঢলুয়া মানবসেবা সংগঠন</div>
-<div style="margin-top:8px"><a href="index.html">← সাইট দেখুন</a></div>
-</div>
-</header>
-
+<style>*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f7f5;color:#17352b}.top{background:#087f5b;color:#fff;padding:18px}.wrap{max-width:900px;margin:auto}.card{background:#fff;border-radius:14px;padding:18px;margin:16px 0;box-shadow:0 3px 14px #0001}input,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #ccd8d3;border-radius:8px;font-size:15px}button{border:0;border-radius:8px;padding:11px 16px;background:#087f5b;color:#fff;font-size:15px;margin:4px}.red{background:#c92a2a}.gray{background:#667085}.hidden{display:none}.msg{padding:10px;border-radius:8px;background:#edf7f2;margin-top:10px}.item{border:1px solid #d8e2de;border-radius:10px;padding:12px;margin:8px 0}.small{font-size:13px;color:#667085}a{color:#fff}</style>
+</head><body>
+<header class="top"><div class="wrap"><h1>Admin Panel</h1><div>ফুলঢলুয়া মানবসেবা সংগঠন</div><div style="margin-top:8px"><a href="index.html">← সাইট দেখুন</a></div></div></header>
 <main class="wrap">
-
-<!-- LOGIN -->
-<section id="loginBox" class="card">
-<h2>🔐 Admin Login</h2>
-<p class="small">আপনার ফোন নম্বর ও পাসওয়ার্ড দিয়ে লগইন করুন।</p>
-
-<label>ফোন নম্বর</label>
-<input id="phone" type="tel" placeholder="017XXXXXXXX">
-
-<label>পাসওয়ার্ড</label>
-<input id="password" type="password" placeholder="পাসওয়ার্ড">
-
-<button onclick="login()">লগইন</button>
-
-<div id="loginMsg"></div>
-</section>
-
-<!-- ADMIN -->
+<section id="loginBox" class="card"><h2>🔐 Admin Login</h2><p class="small">ফোন নম্বর ও পাসওয়ার্ড দিয়ে লগইন করুন।</p><label>ফোন নম্বর</label><input id="phone" type="tel" placeholder="017XXXXXXXX"><label>পাসওয়ার্ড</label><input id="password" type="password" placeholder="পাসওয়ার্ড"><button type="button" onclick="login()">লগইন</button><div id="loginMsg"></div></section>
 <section id="panel" class="hidden">
-
-<div class="card">
-<h2>⚙️ Admin Dashboard</h2>
-<div id="status" class="msg">ডাটা লোড হচ্ছে...</div>
-<button class="gray" onclick="logout()">লগআউট</button>
-</div>
-
-<div class="card">
-<h2>👥 সদস্য যোগ / পরিবর্তন</h2>
-
-<input id="mName" placeholder="সদস্যের নাম">
-<input id="mRole" placeholder="পদবি">
-<input id="mId" placeholder="সদস্য ID">
-<input id="mPhone" placeholder="ফোন নম্বর">
-<input id="mLocation" placeholder="ঠিকানা / এলাকা">
-<input id="mPhoto" placeholder="ছবির URL (ঐচ্ছিক)">
-
-<button onclick="addMember()">সদস্য যোগ করুন</button>
-
-<div id="
+<div class="card"><h2>⚙️ Admin Dashboard</h2><div id="status" class="msg">ডাটা লোড হচ্ছে...</div><button class="gray" onclick="logout()">লগআউট</button></div>
+<div class="card"><h2>👥 সদস্য</h2><input id="mName" placeholder="সদস্যের নাম"><input id="mRole" placeholder="পদবি"><input id="mId" placeholder="সদস্য ID"><input id="mPhone" placeholder="ফোন নম্বর"><input id="mLocation" placeholder="ঠিকানা / এলাকা"><input id="mPhoto" placeholder="ছবির URL (ঐচ্ছিক)"><button onclick="addMember()">সদস্য যোগ করুন</button><div id="memberList"></div></div>
+<div class="card"><h2>📢 নোটিশ</h2><input id="nTitle" placeholder="নোটিশের শিরোনাম"><textarea id="nText" placeholder="নোটিশের বিস্তারিত"></textarea><button onclick="addNotice()">নোটিশ যোগ করুন</button><div id="noticeList"></div></div>
+<div class="card"><h2>📸 কার্যক্রম</h2><input id="aTitle" placeholder="কার্যক্রমের নাম"><textarea id="aText" placeholder="কার্যক্রমের বিস্তারিত"></textarea><button onclick="addActivity()">কার্যক্রম যোগ করুন</button><div id="activityList"></div></div>
+<div class="card"><h2>💰 আর্থিক তথ্য</h2><input id="income" type="number" placeholder="মোট আয়"><input id="expense" type="number" placeholder="মোট ব্যয়"><button onclick="saveFinance()">সংরক্ষণ</button></div>
+<div class="card"><h2>💳 অনুদান</h2><input id="bkash" placeholder="বিকাশ নম্বর"><input id="nagad" placeholder="নগদ নম্বর"><input id="bankName" placeholder="ব্যাংকের নাম"><input id="bankAccount" placeholder="অ্যাকাউন্ট নম্বর"><input id="bankBranch" placeholder="শাখার নাম"><input id="bankHolder" placeholder="অ্যাকাউন্টের নাম"><button onclick="saveDonation()">সংরক্ষণ</button></div>
+</section></main>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig={apiKey:"AIzaSyDAkFAP92SoWDxniN6y_qEUC_tO4enK8sY",authDomain:"fuldhalua-manav-seva-sangathan.firebaseapp.com",databaseURL:"https://fuldhalua-manav-seva-sangathan-default-rtdb.firebaseio.com",projectId:"fuldhalua-manav-seva-sangathan",storageBucket:"fuldhalua-manav-seva-sangathan.firebasestorage.app",messagingSenderId:"1045592949636",appId:"1:1045592949636:web:466a90775598db9f6b93d1"};
+firebase.initializeApp(firebaseConfig);const auth=firebase.auth(),db=firebase.firestore();
+let data={members:[],notices:[],activities:[],finance:{income:0,expense:0},donation:{bkash:"",nagad:"",bankName:"",bankAccount:"",bankBranch:"",bankHolder:""}};
+function adminEmail(p){return "admin"+p.replace(/\D/g,"")+"@fuldhluya-manav-seva-sangathan.firebaseapp.com"}
+async function login(){const p=document.getElementById('phone').value.trim(),pw=document.getElementById('password').value,m=document.getElementById('loginMsg');if(!p||!pw){m.innerHTML='<div class="msg">ফোন নম্বর ও পাসওয়ার্ড দিন।</div>';return}m.innerHTML='<div class="msg">লগইন যাচাই হচ্ছে...</div>';try{await auth.signInWithEmailAndPassword(adminEmail(p),pw)}catch(e){m.innerHTML='<div class="msg">লগইন হয়নি। ফোন নম্বর/পাসওয়ার্ড পরীক্ষা করুন।</div>';console.error(e)}}
+function logout(){auth.signOut()}
+auth.onAuthStateChanged(u=>{document.getElementById('loginBox').classList.toggle('hidden',!!u);document.getElementById('panel').classList.toggle('hidden',!u);if(u)loadData()});
+function loadData(){db.collection('appData').doc('main').onSnapshot(s=>{if(s.exists)data={...data,...s.data()};document.getElementById('status').textContent='✅ ডাটা সফলভাবে লোড হয়েছে';renderAll()},e=>document.getElementById('status').textContent='ডাটা লোড হয়নি: '+e.message)}
+function save(){return db.collection('appData').doc('main').set(data,{merge:true})}
+function addMember(){let n=mName.value.trim();if(!n)return alert('সদস্যের নাম দিন');data.members.push({name:n,role:mRole.value,id:mId.value,phone:mPhone.value,location:mLocation.value,photo:mPhoto.value});save().then(()=>{mName.value=mRole.value=mId.value=mPhone.value=mLocation.value=mPhoto.value='';renderAll()})}
+function addNotice(){if(!nTitle.value.trim())return alert('শিরোনাম দিন');data.notices.push({title:nTitle.value,text:nText.value,date:new Date().toLocaleDateString('bn-BD')});save().then(()=>{nTitle.value=nText.value='';renderAll()})}
+function addActivity(){if(!aTitle.value.trim())return alert('কার্যক্রমের নাম দিন');data.activities.push({title:aTitle.value,text:aText.value,date:new Date().toLocaleDateString('bn-BD')});save().then(()=>{aTitle.value=aText.value='';renderAll()})}
+function saveFinance(){data.finance={income:Number(income.value||0),expense:Number(expense.value||0)};save().then(()=>alert('আর্থিক তথ্য সংরক্ষণ হয়েছে'))}
+function saveDonation(){data.donation={bkash:bkash.value,nagad:nagad.value,bankName:bankName.value,bankAccount:bankAccount.value,bankBranch:bankBranch.value,bankHolder:bankHolder.value};save().then(()=>alert('অনুদানের তথ্য সংরক্ষণ হয়েছে'))}
+function del(a,i){if(confirm('মুছে ফেলবেন?')){data[a].splice(i,1);save().then(renderAll)}}
+function renderAll(){memberList.innerHTML=(data.members||[]).map((m,i)=>'<div class="item"><b>'+m.name+'</b><br><span class="small">'+(m.role||'')+' | '+(m.id||'')+' | '+(m.phone||'')+'</span><br><button class="red" onclick="del(\'members\','+i+')">মুছুন</button></div>').join('');noticeList.innerHTML=(data.notices||[]).map((n,i)=>'<div class="item"><b>'+n.title+'</b><p>'+n.text+'</p><button class="red" onclick="del(\'notices\','+i+')">মুছুন</button></div>').join('');activityList.innerHTML=(data.activities||[]).map((a,i)=>'<div class="item"><b>'+a.title+'</b><p>'+a.text+'</p><button class="red" onclick="del(\'activities\','+i+')">মুছুন</button></div>').join('');income.value=data.finance?.income||0;expense.value=data.finance?.expense||0;bkash.value=data.donation?.bkash||'';nagad.value=data.donation?.nagad||'';bankName.value=data.donation?.bankName||'';bankAccount.value=data.donation?.bankAccount||'';bankBranch.value=data.donation?.bankBranch||'';bankHolder.value=data.donation?.bankHolder||''}
+</script></body></html>
