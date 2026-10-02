@@ -2,153 +2,63 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="theme-color" content="#087f3b">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ফুলঢলুয়া মানবসেবা সংগঠন</title>
+<meta name="description" content="ফুলঢলুয়া মানবসেবা সংগঠন — সদস্য, নোটিশ, কার্যক্রম, আর্থিক হিসাব ও অনুদানের তথ্য।">
 <style>
-*{box-sizing:border-box}
-:root{--green:#087f3b;--green2:#12a957;--blue:#0879d9;--red:#e53935;--bg:#f5f8f7;--ink:#10251b;--muted:#64756c;--card:#fff}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Bengali","Noto Sans",Arial,sans-serif}
-a{text-decoration:none;color:inherit}
-.top{background:linear-gradient(135deg,#056b34,#10a957);color:#fff;padding:12px 14px 18px;position:sticky;top:0;z-index:10;box-shadow:0 3px 16px #0002}
-.brand{display:flex;align-items:center;gap:12px;max-width:1100px;margin:auto}
-.logo{width:62px;height:62px;border-radius:50%;object-fit:cover;background:#fff;border:3px solid #fff;box-shadow:0 3px 10px #0003}
-.brand h1{font-size:22px;line-height:1.25;margin:0;font-weight:900}
-.brand p{margin:3px 0 0;font-size:13px;opacity:.9}
-.nav{display:flex;gap:8px;overflow:auto;max-width:1100px;margin:14px auto 0;padding-bottom:2px}
-.nav a{white-space:nowrap;background:#ffffff1c;border:1px solid #ffffff30;border-radius:999px;padding:9px 14px;font-size:14px}
-.wrap{max-width:1100px;margin:auto;padding:14px}
-.cover{height:205px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(135deg,#087f3b,#0879d9);box-shadow:0 5px 22px #0002;margin-bottom:16px}
-.cover img{width:100%;height:100%;object-fit:cover;display:block}
-.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#042c18b8,#00000018)}
-.coverText{position:absolute;z-index:1;left:22px;bottom:18px;color:white;text-shadow:0 2px 7px #0008}
-.coverText h2{margin:0;font-size:26px}.coverText p{margin:5px 0 0}
-.card{background:var(--card);border:1px solid #dce8e2;border-radius:20px;padding:18px;margin:14px 0;box-shadow:0 3px 16px #1231}
-.intro h2{margin:0 0 8px;font-size:25px}.intro p{color:var(--muted);line-height:1.9;margin:0}
-.title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:24px 2px 10px}
-.title h2{margin:0;font-size:22px}.badge{font-size:12px;color:var(--green);background:#e7f6ed;padding:7px 10px;border-radius:999px}
-.search{display:flex;gap:8px}.search input{flex:1;padding:13px 15px;border:1px solid #ccdcd4;border-radius:13px;font-size:15px;outline:none}.search input:focus{border-color:var(--green)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.member{background:#fff;border:1px solid #e0e9e4;border-radius:18px;padding:16px;text-align:center;box-shadow:0 2px 10px #1231}
-.member img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:4px solid #e8f6ed;background:#eef4f0}
-.member h3{margin:10px 0 2px;font-size:19px}.role{color:var(--green);font-weight:700}.phone{color:var(--muted);margin-top:5px}
-.committee{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.person{background:#f8fbf9;border:1px solid #dfebe4;border-radius:15px;padding:13px}.person b{display:block}.person span{color:var(--muted);font-size:13px}
-.notice{border-left:5px solid var(--green);background:#f8fcf9;border-radius:12px;padding:13px;margin:9px 0}
-.notice b{display:block;margin-bottom:3px}.muted{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#f7fbf8;border:1px solid #dfebe4;border-radius:15px;padding:14px;text-align:center}.stat b{display:block;font-size:22px;color:var(--green)}
-.donates{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.donate{border:1px solid #dce8e2;border-radius:16px;padding:15px;background:#fff}.donate h3{margin:0 0 8px}.copy{border:0;background:#e8f5ed;color:var(--green);border-radius:9px;padding:7px 10px}
-footer{margin-top:30px;background:#092719;color:#dff5e8;text-align:center;padding:24px 14px;line-height:1.8}
-.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed #c8d8d0;border-radius:15px}
-@media(max-width:650px){.cover{height:180px}.coverText h2{font-size:22px}.stats,.donates{grid-template-columns:1fr}.brand h1{font-size:19px}}
+:root{--g:#087f5b;--g2:#0ca678;--dark:#083b2e;--bg:#f5faf8;--card:#fff;--muted:#60736d;--line:#dcebe5;--gold:#e9b949;--shadow:0 12px 35px #083b2e12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:#16342c}
+a{text-decoration:none;color:inherit}.top{position:sticky;top:0;z-index:20;background:#063c2fF2;backdrop-filter:blur(12px);color:white;border-bottom:1px solid #ffffff1c}
+.wrap{max-width:1150px;margin:auto;padding:0 18px}.bar{display:flex;align-items:center;gap:14px;min-height:74px}.logo{width:52px;height:52px;border-radius:14px;object-fit:cover;background:#fff}.brand h1{font-size:20px;margin:0}.brand p{margin:2px 0 0;color:#d7f5eb;font-size:12px}.nav{margin-left:auto;display:flex;gap:8px;overflow:auto;padding:8px 0}.nav a{white-space:nowrap;padding:9px 12px;border-radius:999px;background:#ffffff12;font-size:14px}.nav a:hover{background:#ffffff22}
+.hero{padding:22px 0 34px;background:linear-gradient(135deg,#e8fff7,#f7fffc)}.cover{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);background:#dff7ef}.cover img{display:block;width:100%;max-height:330px;object-fit:cover}.heroCard{margin:-32px 18px 0;position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow)}.heroCard h2{margin:0 0 8px;font-size:30px;color:var(--dark)}.heroCard p{margin:6px 0;color:var(--muted);line-height:1.75}.pill{display:inline-flex;padding:7px 12px;border-radius:999px;background:#e8f8f2;color:var(--g);font-weight:700;font-size:13px}
+section{padding:28px 0}.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:16px}.sectionHead h2{margin:0;color:var(--dark);font-size:24px}.sectionHead p{margin:3px 0 0;color:var(--muted)}.search{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:16px;outline:none}.search:focus{border-color:var(--g);box-shadow:0 0 0 4px #0ca67815}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.member{text-align:center}.member img{width:105px;height:105px;border-radius:50%;object-fit:cover;border:5px solid #e7f7f1}.member h3{margin:10px 0 2px}.muted{color:var(--muted)}.tag{display:inline-block;background:#eef8f5;color:var(--g);padding:5px 9px;border-radius:8px;font-size:12px;margin-top:6px}.row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:10px 0}.row:first-child{border-top:0}.notice{border-left:5px solid var(--g)}.activity h3,.notice h3{margin:0 0 5px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.stat{padding:20px;border-radius:18px;background:#fff;border:1px solid var(--line)}.stat b{display:block;font-size:26px;color:var(--dark);margin-top:5px}.donate{border-top:4px solid var(--g)}.donate.bank{border-top-color:#a67c00}.copy{border:0;background:var(--g);color:#fff;padding:8px 11px;border-radius:9px;font-weight:700}.empty{padding:25px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:16px}.footer{background:#062f25;color:#d8eee8;padding:30px 0;margin-top:25px}.footer small{color:#a9cfc4}.adminLink{display:inline-block;margin-top:10px;color:#fff;background:#0ca678;padding:10px 14px;border-radius:10px;font-weight:700}
+@media(max-width:760px){.bar{align-items:flex-start;padding:10px 0}.nav{position:absolute;left:0;right:0;top:72px;background:#063c2f;padding:8px 18px}.hero{padding-top:60px}.heroCard h2{font-size:25px}}
 </style>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
-<header class="top">
-  <div class="brand">
-    <img class="logo" src="logo.png" alt="সংগঠনের লোগো">
-    <div><h1>ফুলঢলুয়া মানবসেবা সংগঠন</h1><p>মানবতার সেবায় ঐক্যবদ্ধ</p></div>
-  </div>
-  <nav class="nav">
-    <a href="#home">হোম</a><a href="#search">সদস্য খুঁজুন</a><a href="#members">সদস্যদের তালিকা</a><a href="#committee">কমিটির তালিকা</a><a href="#notices">নোটিশ</a><a href="#activities">কার্যক্রম</a><a href="#finance">আর্থিক হিসাব</a><a href="#donate">অনুদান</a>
-  </nav>
-</header>
-
-<main class="wrap" id="home">
-  <section class="cover">
-    <img src="cover-banner.png" alt="মানবসেবামূলক কভার ছবি" onerror="this.style.display='none'">
-    <div class="coverText"><h2>মানবতার সেবায় আমরা একসাথে</h2><p>সেবা • ঐক্য • মানবতা</p></div>
-  </section>
-
-  <section class="card intro">
-    <h2>ফুলঢলুয়া মানবসেবা সংগঠন</h2>
-    <p>এই ওয়েবসাইটে সংগঠনের সদস্য, কমিটি, নোটিশ, কার্যক্রম, আর্থিক হিসাব ও অনুদানের তথ্য সবার জন্য উন্মুক্ত থাকবে। <b>সাধারণ সদস্যদের কোনো অ্যাকাউন্ট বা লগইন প্রয়োজন নেই।</b></p>
-  </section>
-
-  <section id="search">
-    <div class="title"><h2>🔎 সদস্য খুঁজুন</h2><span class="badge">নাম / ফোন / আইডি</span></div>
-    <div class="card">
-      <div class="search"><input id="q" placeholder="সদস্যের নাম, ফোন বা সদস্য আইডি লিখুন…" oninput="filterMembers()"></div>
-    </div>
-  </section>
-
-  <section id="members">
-    <div class="title"><h2>👥 সদস্যদের তালিকা</h2><span class="badge" id="memberCount">সকলের জন্য উন্মুক্ত</span></div>
-    <div id="memberGrid" class="grid"></div>
-  </section>
-
-  <section id="committee">
-    <div class="title"><h2>🏛️ কমিটির তালিকা</h2><span class="badge">দায়িত্বপ্রাপ্ত সদস্য</span></div>
-    <div id="committeeGrid" class="committee"></div>
-  </section>
-
-  <section id="notices">
-    <div class="title"><h2>📢 নোটিশ</h2></div>
-    <div id="noticeList" class="card"></div>
-  </section>
-
-  <section id="activities">
-    <div class="title"><h2>🤝 সংগঠনের কার্যক্রম</h2></div>
-    <div class="grid">
-      <div class="card"><h3>🩸 মানবিক সহায়তা</h3><p class="muted">প্রয়োজনে অসহায় মানুষের পাশে দাঁড়ানো।</p></div>
-      <div class="card"><h3>🍚 ত্রাণ ও সহায়তা</h3><p class="muted">দুর্যোগ ও সংকটে মানুষের পাশে সহযোগিতা।</p></div>
-      <div class="card"><h3>🌱 সামাজিক উদ্যোগ</h3><p class="muted">সমাজের কল্যাণে সচেতনতামূলক কার্যক্রম।</p></div>
-    </div>
-  </section>
-
-  <section id="finance">
-    <div class="title"><h2>💰 সংগঠনের আর্থিক হিসাব</h2><span class="badge">স্বচ্ছ হিসাব</span></div>
-    <div class="stats">
-      <div class="stat"><span>মোট অনুদান</span><b id="income">৳০</b></div>
-      <div class="stat"><span>মোট ব্যয়</span><b id="expense">৳০</b></div>
-      <div class="stat"><span>বর্তমান ব্যালেন্স</span><b id="balance">৳০</b></div>
-    </div>
-  </section>
-
-  <section id="donate">
-    <div class="title"><h2>💚 অনুদান দিন</h2><span class="badge">সহযোগিতা করুন</span></div>
-    <div class="donates">
-      <div class="donate"><h3>🟢 বিকাশ</h3><p>নম্বর: <b id="bkash">017XXXXXXXX</b></p><button class="copy" onclick="copyText('bkash')">কপি</button></div>
-      <div class="donate"><h3>🟠 নগদ</h3><p>নম্বর: <b id="nagad">017XXXXXXXX</b></p><button class="copy" onclick="copyText('nagad')">কপি</button></div>
-      <div class="donate"><h3>🏦 NRBC Bank</h3><p>ব্যাংক: NRBC Bank<br>অ্যাকাউন্ট: <b id="bankAccount">তথ্য যোগ করা হবে</b></p><p class="muted" id="bankExtra">শাখা ও অন্যান্য তথ্য এখানে থাকবে।</p></div>
-    </div>
-  </section>
+<header class="top"><div class="wrap bar">
+<img class="logo" src="logo.png" alt="লোগো">
+<div class="brand"><h1>ফুলঢলুয়া মানবসেবা সংগঠন</h1><p>মানবতার সেবায় ঐক্যবদ্ধ</p></div>
+<nav class="nav"><a href="#home">হোম</a><a href="#members">সদস্য</a><a href="#committee">কমিটি</a><a href="#notices">নোটিশ</a><a href="#activities">কার্যক্রম</a><a href="#finance">হিসাব</a><a href="#donate">অনুদান</a></nav>
+</div></header>
+<main id="home">
+<section class="hero"><div class="wrap">
+<div class="cover"><img src="cover-banner.png" alt="সংগঠনের ব্যানার"></div>
+<div class="heroCard"><span class="pill">সবার জন্য উন্মুক্ত</span><h2>ফুলঢলুয়া মানবসেবা সংগঠন</h2><p>এই ওয়েবসাইটে সংগঠনের সদস্য, কমিটি, নোটিশ, কার্যক্রম, আর্থিক হিসাব ও অনুদানের তথ্য প্রকাশ করা হবে। সদস্যদের আলাদা লগইনের প্রয়োজন নেই।</p></div>
+</div></section>
+<section id="members"><div class="wrap">
+<div class="sectionHead"><div><h2>👥 সকল সদস্য</h2><p>নাম, আইডি, পদ, ফোন ও অবস্থান</p></div></div>
+<input id="memberSearch" class="search" placeholder="সদস্যের নাম, আইডি বা ফোন দিয়ে খুঁজুন...">
+<div id="memberGrid" class="grid" style="margin-top:16px"></div>
+</div></section>
+<section id="committee"><div class="wrap"><div class="sectionHead"><div><h2>🏛️ কমিটির তালিকা</h2><p>সংগঠনের দায়িত্বশীল সদস্যদের তথ্য</p></div></div><div id="committeeGrid" class="grid"></div></div></section>
+<section id="notices"><div class="wrap"><div class="sectionHead"><div><h2>📢 নোটিশ</h2><p>সংগঠনের সর্বশেষ ঘোষণা</p></div></div><div id="noticeGrid" class="grid"></div></div></section>
+<section id="activities"><div class="wrap"><div class="sectionHead"><div><h2>🌿 কার্যক্রম</h2><p>মানবসেবামূলক কাজের তথ্য</p></div></div><div id="activityGrid" class="grid"></div></div></section>
+<section id="finance"><div class="wrap"><div class="sectionHead"><div><h2>💰 আর্থিক হিসাব</h2><p>প্রকাশিত আয়-ব্যয়ের সারাংশ</p></div></div><div class="stats"><div class="stat">মোট আয়<b id="income">৳ 0</b></div><div class="stat">মোট ব্যয়<b id="expense">৳ 0</b></div><div class="stat">বর্তমান ব্যালেন্স<b id="balance">৳ 0</b></div></div></div></section>
+<section id="donate"><div class="wrap"><div class="sectionHead"><div><h2>🤲 অনুদান / সহযোগিতা</h2><p>বিকাশ, নগদ ও ব্যাংক — পাশাপাশি</p></div></div><div class="grid">
+<div class="card donate"><h3>🟢 বিকাশ</h3><div class="row"><span>নম্বর</span><b id="bkash">তথ্য যোগ করা হবে</b></div><button class="copy" onclick="copyText('bkash')">কপি</button></div>
+<div class="card donate"><h3>🟠 নগদ</h3><div class="row"><span>নম্বর</span><b id="nagad">তথ্য যোগ করা হবে</b></div><button class="copy" onclick="copyText('nagad')">কপি</button></div>
+<div class="card donate bank"><h3>🏦 NRBC Bank</h3><div class="row"><span>অ্যাকাউন্ট</span><b id="bankAccount">তথ্য যোগ করা হবে</b></div><div class="muted" id="bankExtra"></div><button class="copy" onclick="copyText('bankAccount')">কপি</button></div>
+</div></div></section>
 </main>
-
-<footer>© ফুলঢলুয়া মানবসেবা সংগঠন<br>মানবতার সেবায় ঐক্যবদ্ধ</footer>
-
+<footer class="footer"><div class="wrap"><b>ফুলঢলুয়া মানবসেবা সংগঠন</b><br><small>মানবতার সেবায় ঐক্যবদ্ধ</small><br><a class="adminLink" href="admin.html">Admin Panel</a></div></footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
-const fallback={
- members:[{name:"Md Raju Ahmed",role:"Admin",phone:"01724118240",id:"ADMIN-001",photo:"admin-photo.png"}],
- committee:[{name:"Md Raju Ahmed",role:"Admin"}],
- notices:[],
- finance:{income:0,expense:0},
- donation:{bkash:"017XXXXXXXX",nagad:"017XXXXXXXX",bankAccount:"তথ্য যোগ করা হবে",bankExtra:"শাখা ও অন্যান্য তথ্য এখানে থাকবে।"}
-};
-let data=JSON.parse(JSON.stringify(fallback));
-
-function money(n){return "৳"+Number(n||0).toLocaleString("bn-BD")}
-function render(){
- const q=(document.getElementById("q").value||"").toLowerCase();
- const ms=data.members.filter(m=>(m.name+" "+(m.phone||"")+" "+(m.id||"")).toLowerCase().includes(q));
- document.getElementById("memberGrid").innerHTML=ms.length?ms.map(m=>`<article class="member"><img src="${m.photo||"logo.png"}" onerror="this.src='logo.png'"><h3>${m.name||""}</h3><div class="role">${m.role||"সদস্য"}</div>${m.id?`<div class="muted">আইডি: ${m.id}</div>`:""}${m.phone?`<div class="phone">📞 ${m.phone}</div>`:""}</article>`).join(""):`<div class="empty">কোনো সদস্য পাওয়া যায়নি।</div>`;
- document.getElementById("memberCount").textContent=`মোট ${data.members.length} জন`;
- document.getElementById("committeeGrid").innerHTML=data.committee.length?data.committee.map(x=>`<div class="person"><b>${x.name||""}</b><span>${x.role||""}</span></div>`).join(""):`<div class="empty">কমিটির তথ্য যোগ করা হয়নি।</div>`;
- document.getElementById("noticeList").innerHTML=data.notices.length?data.notices.map(n=>`<div class="notice"><b>${n.title||"নোটিশ"}</b><span class="muted">${n.text||n.body||""}</span></div>`).join(""):`<div class="empty">এখনও কোনো নোটিশ প্রকাশ করা হয়নি।</div>`;
- const f=data.finance||{}; document.getElementById("income").textContent=money(f.income);document.getElementById("expense").textContent=money(f.expense);document.getElementById("balance").textContent=money(Number(f.income||0)-Number(f.expense||0));
- const d=data.donation||{};document.getElementById("bkash").textContent=d.bkash||"তথ্য যোগ করা হবে";document.getElementById("nagad").textContent=d.nagad||"তথ্য যোগ করা হবে";document.getElementById("bankAccount").textContent=d.bankAccount||"তথ্য যোগ করা হবে";document.getElementById("bankExtra").textContent=d.bankExtra||"";
+const firebaseConfig={apiKey:"AIzaSyDAfKAP92SoWDxniN6y_qEUC_tO4enK8sY",authDomain:"fuldhalua-manav-seva-sangathan.firebaseapp.com",databaseURL:"https://fuldhalua-manav-seva-sangathan-default-rtdb.firebaseio.com",projectId:"fuldhalua-manav-seva-sangathan",storageBucket:"fuldhalua-manav-seva-sangathan.firebasestorage.app",messagingSenderId:"1045592949636",appId:"1:1045592949636:web:466a90775598db9f6b93d1"};
+firebase.initializeApp(firebaseConfig);const db=firebase.firestore();
+let data={members:[{name:"Md Raju Ahmed",role:"Admin",phone:"01724118240",id:"ADMIN-001",photo:"admin-photo.png",location:""}],committee:[{name:"Md Raju Ahmed",role:"Admin"}],notices:[],activities:[],finance:{income:0,expense:0},donation:{bkash:"তথ্য যোগ করা হবে",nagad:"তথ্য যোগ করা হবে",bankAccount:"তথ্য যোগ করা হবে",bankExtra:""}};
+const $=id=>document.getElementById(id), money=n=>"৳ "+Number(n||0).toLocaleString("bn-BD");
+function render(){let q=($("memberSearch").value||"").toLowerCase();let ms=data.members.filter(m=>Object.values(m).join(" ").toLowerCase().includes(q));$("memberGrid").innerHTML=ms.length?ms.map(m=>`<div class="card member"><img src="${m.photo||"admin-photo.png"}"><h3>${m.name||""}</h3><div class="muted">${m.role||"সদস্য"}</div><span class="tag">${m.id||"ID নেই"}</span><div class="muted" style="margin-top:8px">${m.phone||""}${m.location?" · "+m.location:""}</div></div>`).join(""):`<div class="empty">কোনো সদস্য পাওয়া যায়নি।</div>`;
+$("committeeGrid").innerHTML=data.committee.length?data.committee.map(m=>`<div class="card"><h3>${m.name||""}</h3><div class="muted">${m.role||""}</div></div>`).join(""):`<div class="empty">কমিটির তথ্য এখনো যোগ করা হয়নি।</div>`;
+$("noticeGrid").innerHTML=data.notices.length?data.notices.map(n=>`<div class="card notice"><h3>${n.title||"নোটিশ"}</h3><div class="muted">${n.date||""}</div><p>${n.text||""}</p></div>`).join(""):`<div class="empty">এখনো কোনো নোটিশ প্রকাশ করা হয়নি।</div>`;
+$("activityGrid").innerHTML=data.activities.length?data.activities.map(a=>`<div class="card activity"><h3>${a.title||"কার্যক্রম"}</h3><p class="muted">${a.text||""}</p></div>`).join(""):`<div class="empty">এখনো কোনো কার্যক্রমের তথ্য যোগ করা হয়নি।</div>`;
+$("income").textContent=money(data.finance.income);$("expense").textContent=money(data.finance.expense);$("balance").textContent=money((data.finance.income||0)-(data.finance.expense||0));
+$("bkash").textContent=data.donation.bkash||"তথ্য যোগ করা হবে";$("nagad").textContent=data.donation.nagad||"তথ্য যোগ করা হবে";$("bankAccount").textContent=data.donation.bankAccount||"তথ্য যোগ করা হবে";$("bankExtra").textContent=data.donation.bankExtra||"";
 }
-function filterMembers(){render()}
-function copyText(id){navigator.clipboard?.writeText(document.getElementById(id).textContent);alert("কপি হয়েছে");}
-render();
-
-try{
- const firebaseConfig={apiKey:"AIzaSyDAkFAP92SoWDxniN6y_qEUC_tO4enK8sY",authDomain:"fuldhalua-manav-seva-sangathan.firebaseapp.com",databaseURL:"https://fuldhalua-manav-seva-sangathan-default-rtdb.firebaseio.com",projectId:"fuldhalua-manav-seva-sangathan",storageBucket:"fuldhalua-manav-seva-sangathan.firebasestorage.app",messagingSenderId:"1045592949636",appId:"1:1045592949636:web:466a90775598db9f6b93d1"};
- firebase.initializeApp(firebaseConfig);
- firebase.firestore().collection("appData").doc("main").onSnapshot(s=>{if(s.exists){data={...data,...s.data()};render()}});
-}catch(e){console.log(e)}
+$("memberSearch").addEventListener("input",render);render();
+db.collection("appData").doc("main").onSnapshot(s=>{if(s.exists)data={...data,...s.data(),finance:{...data.finance,...(s.data().finance||{})},donation:{...data.donation,...(s.data().donation||{})}};render()},()=>render());
+function copyText(id){navigator.clipboard?.writeText($(id).textContent).then(()=>alert("কপি হয়েছে"));} 
 </script>
-</body>
-</html>
+</body></html>
