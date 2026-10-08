@@ -224,6 +224,18 @@ function viewMember(id){
     <h3>অনুদানের ইতিহাস</h3>${history}
     <button class="secondary full" style="margin-top:10px" onclick="closeModal()">বন্ধ করুন</button>`)
 }
+function donations(){
+  let t=totals();
+  let rows=state.donations.map(x=>{
+    let m=state.members.find(a=>a.id===x.memberId);
+    return `<div class="card"><div class="row"><span><b>${esc(m?.name||"অজানা সদস্য")}</b><br><small>${esc(x.date||"")} · ${esc(x.method||"")}</small></span><b>${money(x.amount)}</b></div></div>`;
+  }).join("");
+  return `<h2>💰 অনুদান</h2>
+  <div class="stats"><div class="stat">💰<span class="muted">মোট অনুদান</span><b>${money(t.d)}</b></div><div class="stat">🏦<span class="muted">বর্তমান জমা</span><b>${money(t.b)}</b></div></div>
+  ${isAdmin()?`<button class="primary full" style="margin-top:12px" onclick="manageDonations()">⚙️ অনুদান পরিচালনা / যোগ করুন</button>`:""}
+  <h3 style="margin-top:18px">অনুদানের তালিকা</h3>
+  ${rows||`<div class="card">এখনও কোনো অনুদানের রেকর্ড নেই।</div>`}`;
+}
 function expenses(){let t=totals();return `<div class="card"><h3>🧾 অনুদান ব্যয়</h3><div class="row"><span>মোট ব্যয়</span><b>${money(t.e)}</b></div><div class="row"><span>বর্তমান জমা</span><b>${money(t.b)}</b></div></div>${state.expenses.map(x=>`<div class="card"><b>${esc(x.title)}</b><div class="row"><span>${esc(x.date||"")}</span><b>${money(x.amount)}</b></div><p>${esc(x.note||"")}</p></div>`).join("")||`<div class="card">কোনো ব্যয়ের তথ্য নেই।</div>`}`}
 function notices(){return `<h2>📢 নোটিশ</h2>${state.notices.map(x=>`<div class="card notice"><h3>${esc(x.title)}</h3><p>${esc(x.body)}</p><small>${esc(x.date||"")}</small></div>`).join("")||`<div class="card">কোনো নোটিশ নেই।</div>`}`}
 function activities(){return `<h2>📸 কার্যক্রম</h2>${state.activities.map(x=>`<div class="card"><h3>${esc(x.title)}</h3>${x.photo?`<img src="${esc(x.photo)}" style="width:100%;border-radius:14px;max-height:320px;object-fit:cover">`:""}<p>${esc(x.body||"")}</p></div>`).join("")||`<div class="card">কোনো কার্যক্রম যোগ করা হয়নি।</div>`}`}
@@ -308,25 +320,52 @@ async function saveMember(id){let f=$("mPhoto").files[0],num=$("mIdNum").value.r
 function donationForm(x,id){x=x||{};return `<h2>${id?'✏️ অনুদান এডিট':'💰 অনুদান যোগ'}</h2><label>সদস্য</label><select id="dMember">${state.members.map(m=>`<option value="${m.id}" ${x.memberId===m.id?'selected':''}>${esc(m.name)}</option>`).join('')}</select><label>পরিমাণ</label><input id="dAmount" type="number" value="${x.amount||''}"><label>তারিখ</label><input id="dDate" type="date" value="${x.date||new Date().toISOString().slice(0,10)}"><label>মাধ্যম</label><select id="dMethod"><option ${x.method==='bKash'?'selected':''}>bKash</option><option ${x.method==='Nagad'?'selected':''}>Nagad</option><option ${x.method==='Bank'?'selected':''}>Bank</option><option ${x.method==='Cash'?'selected':''}>Cash</option></select><button class="primary full" onclick="saveDonation('${id||''}')">💾 ${id?'পরিবর্তন সংরক্ষণ':'অনুদান সংরক্ষণ'}</button><button class="secondary full" style="margin-top:8px" onclick="closeModal()">বন্ধ করুন</button>`}
 function manageDonations(){let list=state.donations.map(x=>{let m=state.members.find(a=>a.id===x.memberId);return `<div class="card"><div class="row"><span><b>${esc(m?.name||'অজানা সদস্য')}</b><br><small>${esc(x.date||'')} · ${esc(x.method||'')}</small></span><b>${money(x.amount)}</b></div>${adminActions(x,'donation')}</div>`}).join('');modal(`<h2>💰 অনুদান পরিচালনা</h2><div class="card">${state.members.length?donationForm(null,null):'আগে একজন সদস্য যোগ করুন।'}</div><h3>অনুদানের রেকর্ড (${state.donations.length})</h3>${list||'<div class="card">কোনো অনুদানের রেকর্ড নেই।</div>'}`)}
 async function saveDonation(id){
-  if(!isAdmin())return toast("Admin লগইন করুন");
-  let memberId=$("dMember").value;
-  let amount=Number($("dAmount").value);
-  if(!memberId||amount<=0)return toast("সদস্য ও সঠিক পরিমাণ দিন");
-  let old=id?state.donations.find(x=>x.id===id):null;
-  let d={memberId,amount,date:$("dDate").value,method:$("dMethod").value};
-  await saveDoc(C.donations,d,id||null);
-  if(old && old.memberId && old.memberId!==memberId){
-    await db.collection(C.members).doc(old.memberId).set(
-      {status:memberIsGiven(old.memberId)?"given":"pending"},{merge:true}
-    );
+  if(!isAdmin()) return toast("Admin লগইন করুন");
+  try{
+    const memberEl=$("dMember"), amountEl=$("dAmount"), dateEl=$("dDate"), methodEl=$("dMethod");
+    if(!memberEl || !amountEl || !dateEl || !methodEl) return toast("অনুদানের ফর্ম পাওয়া যায়নি");
+    const memberId=memberEl.value;
+    const amount=Number(amountEl.value);
+    const date=dateEl.value || new Date().toISOString().slice(0,10);
+    const method=methodEl.value;
+    if(!memberId) return toast("একজন সদস্য নির্বাচন করুন");
+    if(!Number.isFinite(amount) || amount<=0) return toast("সঠিক অনুদানের পরিমাণ দিন");
+
+    const old=id ? state.donations.find(x=>x.id===id) : null;
+    const data={memberId, amount, date, method};
+
+    // অনুদানের মূল রেকর্ড আগে সেভ হবে। নোটিফিকেশন ব্যর্থ হলেও অনুদান নষ্ট হবে না।
+    let refId=id;
+    if(id){
+      await db.collection(C.donations).doc(id).set(data,{merge:true});
+    }else{
+      const ref=await db.collection(C.donations).add({...data,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+      refId=ref.id;
+    }
+
+    // নতুন অনুদানের নোটিফিকেশন আলাদাভাবে তৈরি হবে।
+    if(!id){
+      try{
+        await db.collection(C.notifications).add({
+          type:"donations",
+          sourceId:refId,
+          memberId,
+          title:"নতুন অনুদান যোগ হয়েছে",
+          body:`অনুদানের ${amount} টাকা গ্রহণ করা হয়েছে। ধন্যবাদ।`,
+          read:false,
+          createdAt:firebase.firestore.FieldValue.serverTimestamp()
+        });
+      }catch(notificationError){ console.warn("Notification save failed",notificationError); }
+    }
+
+    await loadAll();
+    closeModal();
+    render();
+    toast(id?"অনুদান আপডেট হয়েছে":"অনুদান সংরক্ষণ হয়েছে");
+  }catch(e){
+    console.error("saveDonation error",e);
+    toast("অনুদান সংরক্ষণ হয়নি: "+(e.message||"Firebase সমস্যা"));
   }
-  await db.collection(C.members).doc(memberId).set(
-    {status:memberIsGiven(memberId)?"given":"pending"},{merge:true}
-  );
-  await loadAll();
-  closeModal();
-  render();
-  toast(id?"অনুদান আপডেট হয়েছে":"অনুদান সংরক্ষণ হয়েছে");
 }
 function expenseForm(x,id){x=x||{};return `<h2>${id?'✏️ ব্যয় এডিট':'🧾 ব্যয় যোগ'}</h2><label>কাজ/খাত</label><input id="eTitle" value="${esc(x.title||'')}"><label>পরিমাণ</label><input id="eAmount" type="number" value="${x.amount||''}"><label>তারিখ</label><input id="eDate" type="date" value="${x.date||new Date().toISOString().slice(0,10)}"><label>বিস্তারিত</label><textarea id="eNote">${esc(x.note||'')}</textarea><button class="primary full" onclick="saveExpense('${id||''}')">💾 সংরক্ষণ</button>`}
 function manageExpenses(){let list=state.expenses.map(x=>`<div class="card"><div class="row"><span><b>${esc(x.title)}</b><br><small>${esc(x.date||'')}</small></span><b>${money(x.amount)}</b></div><p>${esc(x.note||'')}</p>${adminActions(x,'expense')}</div>`).join('');modal(`<h2>🧾 অনুদান ব্যয় পরিচালনা</h2><div class="card">${expenseForm(null,null)}</div><h3>ব্যয়ের রেকর্ড (${state.expenses.length})</h3>${list||'<div class="card">কোনো ব্যয়ের তথ্য নেই।</div>'}`)}
